@@ -1,10 +1,16 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { Login } from './components/Login';
 import { Dashboard } from './components/Dashboard';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import theme from './theme';
+
+const theme = extendTheme({
+  config: {
+    initialColorMode: 'light',
+    useSystemColorMode: false,
+  },
+});
 
 function App() {
   return (

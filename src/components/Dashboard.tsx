@@ -9,7 +9,7 @@ import {
   SimpleGrid,
   Icon,
   useColorModeValue,
-  HStack,
+  Stack,
   Spacer,
 } from '@chakra-ui/react';
 import { useAuth } from '../contexts/AuthContext';
@@ -104,7 +104,7 @@ export const Dashboard = () => {
               <Heading size="lg">Warehouse Dashboard</Heading>
             </MotionBox>
             <Spacer />
-            <HStack spacing={4}>
+            <Stack direction="row" spacing={4}>
               <Text color="gray.600">
                 {currentUser?.email}
               </Text>
@@ -115,7 +115,7 @@ export const Dashboard = () => {
               >
                 Logout
               </Button>
-            </HStack>
+            </Stack>
           </Flex>
         </Container>
       </Box>

@@ -10,6 +10,7 @@ import {
   useToast,
   Divider,
   Container,
+  Stack,
 } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 import { useAuth } from '../contexts/AuthContext';
@@ -63,7 +64,7 @@ export const Login = () => {
   return (
     <Container maxW="container.sm" py={10}>
       <Box p={8} borderWidth={1} borderRadius={8} boxShadow="lg">
-        <VStack spacing={4} as="form" onSubmit={handleSubmit}>
+        <Stack spacing={4} as="form" onSubmit={handleSubmit}>
           <Text fontSize="2xl" fontWeight="bold">
             Warehouse Login
           </Text>
@@ -106,7 +107,7 @@ export const Login = () => {
           >
             Sign in with Google
           </Button>
-        </VStack>
+        </Stack>
       </Box>
     </Container>
   );
