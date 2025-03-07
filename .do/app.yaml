@@ -1,1 +1,42 @@
- 
+name: warehouse-management
+domains:
+  - domain: warehouse-management-wkudr.ondigitalocean.app
+    type: PRIMARY
+services:
+  - name: web
+    git:
+      branch: main
+      repo_clone_url: https://github.com/mrfreer/warehouse.git
+    build_command: npm install && npm run build
+    run_command: npm run serve
+    http_port: 3000
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    routes:
+      - path: /*
+        preserve_path_prefix: true
+    source_dir: /
+    envs:
+      - key: VITE_FIREBASE_API_KEY
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: VITE_FIREBASE_AUTH_DOMAIN
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: VITE_FIREBASE_PROJECT_ID
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: VITE_FIREBASE_STORAGE_BUCKET
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: VITE_FIREBASE_MESSAGING_SENDER_ID
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+      - key: VITE_FIREBASE_APP_ID
+        scope: RUN_AND_BUILD_TIME
+        type: SECRET
+    health_check:
+      http_path: /
+    cors:
+      allow_origins:
+        - regex: ".*"
